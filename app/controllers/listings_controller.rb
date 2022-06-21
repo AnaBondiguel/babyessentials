@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
+  before_action :set_form_vars, only: %i[ new edit ]
 
   # GET /listings or /listings.json
   def index
@@ -61,6 +62,11 @@ class ListingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
+    end
+    # Set some form variables: create variable at categories so I can use it in the listings
+    def set_form_vars
+      @categories = Category.all
+      @conditions = Listing.conditions.keys
     end
 
     # Only allow a list of trusted parameters through.
