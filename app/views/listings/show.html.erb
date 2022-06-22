@@ -11,7 +11,7 @@
 <% if @listing.sold %>
   <h1>SOLD</h1>
 <% elsif current_user && current_user.id == @listing.user_id %>
-  <h1>Don't buy your own item, it's weird</h1>
+  <h1>Can't purchase your own item</h1>
 <% elsif current_user %>
   <%= button_to "Buy me!", place_order_path %>
 <% else %>

@@ -61,7 +61,7 @@ class ListingsController < ApplicationController
     end
   end
 
-# Create orders
+# Create orders and update sold in the listings
   def place_order
     Order.create(
       listing_id: @listing.id,
@@ -71,7 +71,7 @@ class ListingsController < ApplicationController
 
     @listing.update(sold: true)
 
-    redirect_to orders_success_path
+    redirect_to order_success_path
   end
 
   private
