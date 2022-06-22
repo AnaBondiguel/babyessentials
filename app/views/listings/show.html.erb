@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<div>
+  <% if @listing.picture.attached? %>
+    <%= image_tag @listing.picture, alt: @listing.title, class: "image" %>
+  <% else %>
+    <%= image_tag "baby1.jpeg", alt: @listing.title, class: "image" %>
+  <% end %>
+</div>
+
 <p>
   <strong>Title:</strong>
   <%= @listing.title %>
