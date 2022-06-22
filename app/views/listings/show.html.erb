@@ -53,7 +53,7 @@
   <%= @listing.category_id %>
 </p>
 
-<% if current_user.id == @listing.user_id %>
+<% if current_user && current_user.id == @listing.user_id %>
   <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <% end %>
 
