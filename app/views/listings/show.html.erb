@@ -9,14 +9,27 @@
 </div>
 
 <% if @listing.sold %>
-  <h1>SOLD</h1>
-<% elsif current_user && current_user.id == @listing.user_id %>
-  <h1>Can't purchase your own item</h1>
-<% elsif current_user %>
-  <%= button_to "Buy me!", place_order_path %>
-<% else %>
-  <h1>Please log in to make a purchase</h1>
-<% end %>
+    <h1>SOLD</h1> 
+<% elsif current_user && current_user.id == @listing.user_id %> 
+    <h1>Can't purchase your own item</h1>
+<% elsif current_user %> 
+    <button data-stripe="payment"> Buy Now! <%= number_to_currency(@listing.price) %></button> 
+<% else %> 
+    <h1>Please log in to make a purchase</h1> 
+<% end %> 
+
+<%= link_to 'Back', listings_path, class: 'button' %>
+  
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  document.querySelector("[data-stripe='payment']").addEventListener("click", () => {
+    const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
+    stripe.redirectToCheckout({
+      sessionId: "<%= @session_id %>"
+    });
+  });
+</script> 
+
 
 <p>
   <strong>Title:</strong>
@@ -57,4 +70,5 @@
   <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <% end %>
 
-<%= link_to 'Back', listings_path %>
+
+
