@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   post "listings/:id/order", to: "listings#place_order", as: "place_order"
 
   get 'orders/success'
+  post "/orders/webhook", to: "orders#webhook"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

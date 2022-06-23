@@ -18,7 +18,7 @@ class ListingsController < ApplicationController
       line_items: [{
         name: @listing.title,
         images: ["https://www.talk-business.co.uk/wp-content/uploads/2019/05/filadendron-iStock-1.jpg"],
-        amount: (@listing.price * 100),
+        amount: (@listing.price * 100).to_i,
         currency: 'aud',
         quantity: 1,
       }],
