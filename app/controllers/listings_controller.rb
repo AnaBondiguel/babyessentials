@@ -11,12 +11,13 @@ class ListingsController < ApplicationController
 
   # GET /listings/1 or /listings/1.json
   def show
+    if current_user
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       customer_email: current_user.email,
       line_items: [{
         name: @listing.title,
-        images: ["kid1.jpeg"],
+        images: ["https://www.talk-business.co.uk/wp-content/uploads/2019/05/filadendron-iStock-1.jpg"],
         amount: (@listing.price * 100),
         currency: 'aud',
         quantity: 1,
@@ -30,7 +31,7 @@ class ListingsController < ApplicationController
       cancel_url: "#{root_url}/listings"
     )
     @session_id = session.id
-
+    end
   end
 
   # GET /listings/new
@@ -80,19 +81,6 @@ class ListingsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-# Create orders and update sold in the listings
-  # def place_order
-  #   Order.create(
-  #     listing_id: @listing.id,
-  #     seller_id: @listing.user_id,
-  #     buyer_id: current_user.id
-  #   )
-
-  #   @listing.update(sold: true)
-
-  #   redirect_to orders_success_path
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
