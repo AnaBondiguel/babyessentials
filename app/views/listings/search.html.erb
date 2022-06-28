@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+
+  <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.title %></td>
+        <td><%= listing.description %></td>
+        <td><%= listing.condition %></td>
+        <td><%= number_to_currency(listing.price)%></td>
+        <td><%= link_to 'Show', listing %></td>
+    </tr>
+ <% end %>
+     

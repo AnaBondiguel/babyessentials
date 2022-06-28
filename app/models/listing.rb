@@ -10,4 +10,5 @@ class Listing < ApplicationRecord
     used_once: 3,
     brand_new: 4
   }
-end
+   
+  end

@@ -8,6 +8,10 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.all
   end
+# Create a search bar for webpages
+  def search
+   @listings = Listing.where("title LIKE ?","%" + params[:q] + "%")
+  end
 
   # GET /listings/1 or /listings/1.json
   def show
