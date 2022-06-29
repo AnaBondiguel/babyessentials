@@ -1,6 +1,6 @@
 <span class = "link">
-	<%= link_to "Home", root_path %> | <%= link_to "Listings", listings_path %> | <%= link_to "Bought Items", orders_bought_path %> | <%= link_to "Sold Items", orders_sold_path %>
-</span>
+	<%= link_to "Home", root_path %> | <%= link_to "Listings", listings_path %> | <%= link_to "Bought Items", orders_bought_path %> | <%= link_to "Sold Items", orders_sold_path %> 
+</span> 
 
 <span style="float: right">
     <% if user_signed_in? %>
@@ -8,5 +8,11 @@
     <% else %>
         <%= link_to "Sign up", new_user_registration_path, class: "button button-primary" %>
         <%= link_to "Sign in", new_user_session_path, class: "button button-primary" %>
-    <% end %>
+        <% flash.each do |k, v| %>
+            <div id="<%= k %>"><%= v %></div>
+        <% end %>
+        <%= button_to "Login with Facebook", "/auth/facebook", method: :post, class: "button button-primary" %>
+   <% end %>
+ 
 </span>
+

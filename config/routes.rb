@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get 'orders/success'
   post "/orders/webhook", to: "orders#webhook"
   get 'search', to: "listings#search"
+  get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

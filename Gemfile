@@ -52,3 +52,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "devise", "~> 4.8"
 
 gem "stripe", "~> 6.4"
+
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+
+#custom gems
+gem 'bootstrap', '~> 4.5.2'
+gem 'jquery-rails'

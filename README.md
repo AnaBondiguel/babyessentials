@@ -27,6 +27,8 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 
 6. Using Stripe for a payment system
 
+7. Creating a search bar for users to find their items 
+
 ### Sitemap
 ![Sitemap_App](./sitemap.png)
 
