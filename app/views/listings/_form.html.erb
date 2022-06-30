@@ -1,49 +1,18 @@
-<%= form_with(model: listing) do |form| %>
-  <% if listing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+<%= simple_form_for(@listing) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-      <ul>
-        <% listing.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :description, as: :rich_text_area%>
+    <%= f.input :condition, as: :radio_buttons, collection: [['1', 'very used condition'], ['2', 'good used condition'], ['3', 'used once'], ['4', 'brand new']], label_method: :second, value_method: :first %>
+    <%= f.input :price %>
+    <%= f.input :category_id, collection: ['Nursery Furniture and Decor', 'Prams, Strollers and Accessories', 'Car Seats', 'Playtime and Learning', 'Sleepingwear and Bedding', 'Bathing', 'Feeding', 'Clothing', 'Others'] %>
+    <%=f.file_field :picture %>
+   
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.rich_text_area :description %>
-  </div>
-
-  <div class="field">
-    <% @conditions.each do |option| %>
-      <%= form.label :condition, format_condition(option) %>
-      <%= form.radio_button :condition, option %>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, @categories.map {|c| [c.name, c.id]} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :picture %>
-    <%= form.file_field :picture, accept: "image/png,image/jpg,image/jpeg" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

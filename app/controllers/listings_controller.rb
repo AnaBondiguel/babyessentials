@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy place_order ]
   before_action :set_form_vars, only: %i[ new edit ]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authorize_user, only: [:edit, :update, :destroy ]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   # GET /listings or /listings.json
   def index
@@ -50,7 +50,7 @@ class ListingsController < ApplicationController
   # POST /listings or /listings.json
   def create
     @listing = Listing.new(listing_params)
-    @listing.user = current_user
+    @listing.user_id = current_user.id
 
     respond_to do |format|
       if @listing.save
@@ -94,7 +94,7 @@ class ListingsController < ApplicationController
     # Set some form variables: create variable at categories so I can use it in the listings
     def set_form_vars
       @categories = Category.all
-      @conditions = Listing.conditions.keys
+      # @conditions = Listing.conditions.keys
     end
 
     # Authorizing users: checking if the user who own the listing is the current logined user

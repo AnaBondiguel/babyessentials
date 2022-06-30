@@ -2,11 +2,11 @@
 
 <div>
   <% if @listing.picture.attached? %>
-    <%= image_tag @listing.picture, alt: @listing.title, class: "image" %>
-  <% else %>
-    <%= image_tag "kids1.jpeg", alt: @listing.title, class: "image" %>
-  <% end %>
-</div>
+     <%= image_tag @listing.picture, alt: @listing.title, class: "image" %>
+  <% else %> 
+     <%= image_tag "baby2.jpeg", alt: @listing.title, class: "image" %> 
+  <% end %>  
+</div>  
 
 <% if @listing.sold %>
     <h1>SOLD</h1> 
@@ -71,4 +71,13 @@
 <% end %>
 
 
-
+</div>
+  <% if @listing[:id] > 1 && @listing[:id] < 10 %>
+    <%= link_to "Previous", listing_path(@listing[:id] - 1)%>
+    <%= link_to "Next", listing_path(@listing[:id] + 1)%>
+  <% elsif @listing[:id] <= 1 %>
+    <%= link_to "Next", listing_path(@listing[:id] + 1)%>
+  <% elsif @listing[:id] >= 10 %>
+    <%= link_to "Previous", listing_path(@listing[:id] - 1)%>
+  <% end %>
+</div>
