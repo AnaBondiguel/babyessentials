@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div class="col-md-6">
 <div>
   <% if @listing.picture.attached? %>
      <%= image_tag @listing.picture, alt: @listing.title, class: "image" %>
@@ -67,17 +67,17 @@
 </p>
 
 <% if current_user && current_user.id == @listing.user_id %>
-  <%= link_to 'Edit', edit_listing_path(@listing) %> |
-<% end %>
+  <%= link_to 'Edit', edit_listing_path(@listing), class: "link-listing" %> 
+<% end %> 
 
-
-</div>
+<div>
   <% if @listing[:id] > 1 && @listing[:id] < 10 %>
-    <%= link_to "Previous", listing_path(@listing[:id] - 1)%>
-    <%= link_to "Next", listing_path(@listing[:id] + 1)%>
+    <%= link_to "Previous", listing_path(@listing[:id] - 1), class: "link-listing" %> |
+    <%= link_to "Next", listing_path(@listing[:id] + 1), class: "link-listing" %>
   <% elsif @listing[:id] <= 1 %>
-    <%= link_to "Next", listing_path(@listing[:id] + 1)%>
+    <%= link_to "Next", listing_path(@listing[:id] + 1), class: "link-listing" %>
   <% elsif @listing[:id] >= 10 %>
-    <%= link_to "Previous", listing_path(@listing[:id] - 1)%>
+    <%= link_to "Previous", listing_path(@listing[:id] - 1), class: "link-listing" %>
   <% end %>
+</div>
 </div>

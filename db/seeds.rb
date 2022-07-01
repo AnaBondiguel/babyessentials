@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# categories = ["Nursery Furniture & Decor", "Prams, Strollers & Accessories", "Car Seats", "Playtime & Learning", "Sleepingwear & Bedding", "Bathing", "Feeding", "Clothing", "Others" ]
+categories = ["Nursery Furniture & Decor", "Prams, Strollers & Accessories", "Car Seats", "Playtime & Learning", "Sleepingwear & Bedding", "Bathing", "Feeding", "Clothing", "Others" ]
 
-# if Category.count == 0
-#     categories.each do |category|
-#         Category.create(name: category)
-#         puts "created #{category} category"
-#     end
-# end
+if Category.count == 0
+    categories.each do |category|
+        Category.create(name: category)
+        puts "created #{category} category"
+    end
+ end

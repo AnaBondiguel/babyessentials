@@ -51,7 +51,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
-
+    
     respond_to do |format|
       if @listing.save
         format.html { redirect_to listing_url(@listing), notice: "Listing was successfully created." }
@@ -95,8 +95,9 @@ class ListingsController < ApplicationController
     def set_form_vars
       @categories = Category.all
       # @conditions = Listing.conditions.keys
+      
     end
-
+ 
     # Authorizing users: checking if the user who own the listing is the current logined user
     def authorize_user
       if @listing.user_id != current_user.id
@@ -107,6 +108,6 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :condition, :price, :sold, :user_id, :category_id, :picture)
+      params.require(:listing).permit(:title, :description, :condition, :price, :sold, :user_id, :category_id, :picture, :search)
     end
 end

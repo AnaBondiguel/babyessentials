@@ -15,19 +15,30 @@ Many parents experienced that they had a lot of baby essentials left in their st
 The purpose of this two-sided marketplace application is to help parents to buy and sell baby essentails, such as nursery furniture, prams, and car seats etc. The application connects with parents around our community to their favourite baby products at affordable price. It helps to save spaces at home and money for parents, and to protect our environment for substainability.
 
 ### Functionality / features
-1. Two-sided marketplaces for users to sell and buy products by using Ruby on Rials and Postgreql database in developemnt and production
+1. Two-sided marketplaces for users to sell and buy products by using Ruby on Rails and Postgresql database in development and production
 
-2. Using Devise for user authetication
+2. Using Devise for user authentication
 
 3. User authorisation allows users to have restrictions on what they can see and edit
 
-4. Image uploading capability 
+4. Using Active Storage for uploading images
 
 5. Application deployment on Heroku
 
 6. Using Stripe for a payment system
 
 7. Creating a search bar for users to find their items 
+
+8. Having a form to create new listings with the gem of simply_form
+
+9. Users can use their Facebook account to log into the account of the application with the gem of Omniauth-Facebook
+
+10. I applied bootstrap-scss: card into my view of the listings. Users can have better experiences to view the products online.
+
+11. Users can view what they bought and sold in the past in the links of bought items and sold items.
+
+12. Using Webhook to track customers' payment if the customers loss internet connection after payment and verify the person has truly made a purchase and isn't just faking the data in the URL.
+
 
 ### Sitemap
 ![Sitemap_App](./sitemap.png)
@@ -40,7 +51,7 @@ Our target audiences are parents
 ### Tech stack (e.g. html, css, deployment platform, etc)
 I used Heroku to deploy this two-sided marketplace application.
 
-I also used Responsive CSS skeleton, application.css, and listing.scss for the style.
+I also used bootstrap-sass, responsive CSS skeleton, application.css, and listing.scss for the style of this application.
 
 I used html.erb in the views to structure the web pages.
 
@@ -73,6 +84,9 @@ I used Stripe to handle credit card data and redirect the customer's browser aft
 
 ### Webhook for tracking the purchase
 I used Webhook to track customers payment if the customers loss internect connection after payment and verify the person has truly made a purchase and isn't just faking the data in the URL. Firstly, I went to Stripe dashboard and added endpoint, and registered the account in Ultrahook to get the API key. Secondly, I installed gem for Ultrahook and run ultrahook in my terminal (ultrahook stripe 3000), then copied and pasted the URL into the endpoint in the Stripe dashboard. Thridly, I added the Webhook route in route.rb. Finally, I added the Webhook action in the orders controller.
+
+### Facebook for application login feature
+I followed the documentation [https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview) to set gems and code on my VS code. I got App ID and App scret from the developer Facebook. 
 
 # R17. Describe your projects models in terms of the relationships (active record associations) they have with each other
 1. A user account has none or many orders for the listing items (people may hold an account but not have to buy or sell anything). However, an order has to have a user_id (people can buy or sell without a user account). The relationships are associated through ‘user_id’ on the Users table and creating ‘buyer_id’ and ‘seller_id’ through other tables. 

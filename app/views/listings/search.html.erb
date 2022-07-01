@@ -1,12 +1,15 @@
-<h1>Search Results</h1>
+<div class="col-sm-6">
+  <h2>Search Results</h2> 
 
-  <% @listings.each do |listing| %>
+      <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.title %></td>
-        <td><%= listing.description %></td>
-        <td><%= listing.condition %></td>
-        <td><%= number_to_currency(listing.price)%></td>
-        <td><%= link_to 'Show', listing %></td>
-    </tr>
- <% end %>
+        <td><h1><%= listing.title %></h1></td>
+        <td><h4>Description</h4><%= listing.description %></td>
+        <td><h4>Price:<%= number_to_currency(listing.price) %></h4></td> 
+        <td> <%= link_to "Show More", listing_path(listing.id), class:"btn btn-primary btn-right" %></td>
+      </tr>
+      <% end %>
+</div>
+
+ 
      

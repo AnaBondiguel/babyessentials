@@ -8,6 +8,7 @@
     <%= f.input :condition, as: :radio_buttons, collection: [['1', 'very used condition'], ['2', 'good used condition'], ['3', 'used once'], ['4', 'brand new']], label_method: :second, value_method: :first %>
     <%= f.input :price %>
     <%= f.input :category_id, collection: ['Nursery Furniture and Decor', 'Prams, Strollers and Accessories', 'Car Seats', 'Playtime and Learning', 'Sleepingwear and Bedding', 'Bathing', 'Feeding', 'Clothing', 'Others'] %>
+
     <%=f.file_field :picture %>
    
   </div>
@@ -16,3 +17,4 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+
