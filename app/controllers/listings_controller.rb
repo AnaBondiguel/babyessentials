@@ -94,7 +94,7 @@ class ListingsController < ApplicationController
     # Set some form variables: create variable at categories so I can use it in the listings
     def set_form_vars
       @categories = Category.all
-      # @conditions = Listing.conditions.keys
+      @conditions = Listing.conditions.keys
       
     end
  

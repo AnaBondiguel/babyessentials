@@ -44,6 +44,9 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 ![Sitemap_App](./sitemap.png)
 
 ### Screenshots
+![Homepage](./Homepage.png)
+![Listingspage](./Listings.png)
+![Formpage](./form.png)
 
 ### Target audience
 Our target audiences are parents
@@ -65,6 +68,7 @@ As mums, my friends and I want to get rid of our baby items for the rooms becaus
 # R13. Wireframes for your app
 
 # R14. An ERD for your app
+![ERDBabyEssentails](./ERD.jpg)
 
 # R15. Explain the different high-level components (abstractions) in your app
 My two-sided marketplace application followed a typical Rails application architecture - Model View Controller (MVC). MVC has three main parts: model, view, and controller to serve a specific function and provide modularity.
@@ -73,7 +77,7 @@ The model represents and manages the content or data in the application. The mod
 
 The view is the interface for the application user and is responsible for displaying entities (the model) to the user, and allows the user to interact with the entities. In my application, the html.erb files in the folders - devise, registrations, sessions, shared, layouts, listings, orders, and pages allows me to insert ruby code in the views. This is how views can make use of the information passed to them by controllers from the models, and how I can embed logic directly in my web pages.
 
-The controller is the brain or the orchestrator. By default, only the ApplicationController in a Rails application inherits from ActionController::Base. All other controllers inherit from ApplicationController. This gives one class to configure things such as filtering of sensitive request parameters. In my application, I have application_controller, listings_controller, order_controller, and pages_controller. The controllers interact with the views to get the content from the models in order to display and update the content based on user interaction. The controller executes actions and renders the view. In the controller action, the controller obtains information from the model and provides the information by using instance variables (e.g. @listing) to the view. With the appropriate information, the controller renders the view from the model. The rendered content is sent to the client. By default, the view that it renders is in the views directory and has a name to match the controller action. 
+The controller is the brain or the orchestrator. By default, only the ApplicationController in a Rails application inherits from ActionController::Base. All other controllers inherit from ApplicationController. This gives one class to configure things such as filtering of sensitive request parameters. In my application, I have application_controller, listings_controller, order_controller, pages_controller and omniauth_callbacks_controller. The controllers interact with the views to get the content from the models in order to display and update the content based on user interaction. The controller executes actions and renders the view. In the controller action, the controller obtains information from the model and provides the information by using instance variables (e.g. @listing) to the view. With the appropriate information, the controller renders the view from the model. The rendered content is sent to the client. By default, the view that it renders is in the views directory and has a name to match the controller action. 
 
 # R16. Detail any third party services that your app will use
 ### Heroku for application deployment
@@ -97,12 +101,18 @@ I followed the documentation [https://github.com/heartcombo/devise/wiki/OmniAuth
 
 4. An listing belongs to none or one category such as car seats, prams, and nursery furniture and decor. However, a category has none or many listings. The relationships are associated through ‘category_id’ on the Categories table.
 
+5. A Facebook account can only be used by one user, and a user can have none or one Facebook account to register into the account of application (Users don't need to have a Facebook account to register in the application). The relationships are associated through ‘Facebook_id’ on the Facebook table.
+
+6. A payment has to have an order (users can't pay without an order), and an order has to have a payment (users can't order items without payment). The relationships are associated through ‘payment_id’ on the payments table.
+
 # R18. Discuss the database relations to be implemented in your application
 Entities and attributes
 1. Listings: title, description, condition, price, sold, user_id, category_id
 2. Users: email, username, password
 3. Orders: listing_id, buyer_id, seller_id
 4. Categories: name
+5. Facebook: username
+6. Payments: title, price
 
 The relationship between users and orders
 •	A user has none or many orders
@@ -120,10 +130,19 @@ The relationship between listings and categories
 •	An listing belongs to none or one category
 •	A category has none or many listings
 
+The relationship between Facebook and users
+•	An Facebook account has one user
+•	A user has none or one Facebook account
+
+The relationship between payments and orders
+•	A payment has one order
+•	A order has one payment
+
 Users model
 has_many :listings
 has_many :sold_orders, foreign_key: “seller_id”, class_name: “Order”
 has_many :bought_orders, foreign_key: “buyer_id”, class_name: “Order”
+devise :omniauthable, omniauth_providers: %i (facebook)
 
 Orders model
 belongs_to :listing
@@ -135,5 +154,6 @@ belongs_to :user
 belongs_to :category
 
 # R19. Provide your database schema design
+![ERDBabyEssentails](./ERD.jpg)
 
 # R20. Describe the way tasks are allocated and tracked in your project
