@@ -12,14 +12,16 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[facebook]
 
   def self.from_omniauth(auth)
+    # auth hash info can be found here:
+    # https://github.com/simi/omniauth-facebook#auth-hash
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
+      user.username = auth.extra.raw_info.username
+      # TODO: there should be some way to send this to the user via email
+      # Basically, the idea here is the user signs in via facebook,
+      # we get their email and username data from facebook then we generate a temporary password
+      # for them. We send the password to their facebook email and notify them to update it ASAP.
       user.password = Devise.friendly_token[0, 20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails, 
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
     end
   end
 
