@@ -15,7 +15,7 @@ Many parents experienced that they had a lot of baby essentials left in their st
 The purpose of this two-sided marketplace application is to help parents to buy and sell baby essentails, such as nursery furniture, prams, and car seats etc. The application connects with parents around our community to their favourite baby products at affordable price. It helps to save spaces at home and money for parents, and to protect our environment for substainability.
 
 ### Functionality / features
-1. Two-sided marketplaces for users to sell and buy products by using Ruby on Rails and Postgresql database in development and production
+1. Two-sided marketplaces for users to sell and buy products by using Ruby on Rails, Postgresql database in development and production, and yarn for package manager for javascript 
 
 2. Using Devise for user authentication
 
