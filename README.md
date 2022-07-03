@@ -41,18 +41,19 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 
 
 ### Sitemap
-![Sitemap_App](./sitemap.png)
+![Sitemap_App](sitemap.png)
 
 ### Screenshots
-![Homepage](./Homepage.png)
-![Listingspage](./Listings.png)
-![Formpage](./form.png)
-![Itempage](./item.png)
-![Paymentpage](./payment.png)
-![Successpage](./success.png)
-![Searchpage](./search.png)
-![Signuppage](./signup.png)
-![Signinpage](./signin.png)
+![Homepage](Homepage.png)
+![Listingspage](Listings.png)
+![Formpage](form.png)
+![Itempage](item.png)
+![Paymentpage](payment.png)
+![Successpage](success.png)
+![Searchpage](search.png)
+![Signuppage](signup.png)
+![Signinpage](signin.png)
+![Signinpage](forgotpassword.png)
 
 ### Target audience
 Our target audiences are parents
@@ -69,12 +70,12 @@ I used Postgreql database to create and modify data.
 I used Ruby and Rails to build the infrastructure to support to support the two-sided marketplace application. 
 
 # R12. User stories for your app
-As mums, my friends and I want to get rid of our baby items for the rooms because they grew up. We don't need bassinet, baby capsule, baby walk, baby bouncer etc. anymore, but they are still in a very good condition (some baby products have never been used or used once). We think other parents who have newborn babies may need these baby items. We also would like to purchase toddler or kid essentials from other parents, such as bunk bed, bookshelf, desk, raincoat, bike etc. Therefore, we can recycle those baby/kid items in our community and be environmental friendly. 
+As mums, my friends and I want to get rid of our baby items for the rooms because our kids grew up. We don't need our bassinet, baby capsule, baby walk, baby bouncer etc. anymore, but they are still in very good condition (some baby products have never been used or used once). We think other parents who have newborn babies may need these baby items. At the same time, we also would like to purchase toddler or kid essentials from other parents, such as bunk bed, bookshelf, desk, raincoat, bike etc. Therefore, we can recycle those baby/kid items in our community and be environmentally friendly. 
 
 # R13. Wireframes for your app
 
 # R14. An ERD for your app
-![ERDBabyEssentails](./ERD.jpg)
+![ERDBabyEssentails](ERD.jpg)
 
 # R15. Explain the different high-level components (abstractions) in your app
 My two-sided marketplace application followed a typical Rails application architecture - Model View Controller (MVC). MVC has three main parts: model, view, and controller to serve a specific function and provide modularity.
@@ -160,6 +161,6 @@ belongs_to :user
 belongs_to :category
 
 # R19. Provide your database schema design
-![ERDBabyEssentails](./ERD.jpg)
+![ERDBabyEssentails](ERD.jpg)
 
 # R20. Describe the way tasks are allocated and tracked in your project
