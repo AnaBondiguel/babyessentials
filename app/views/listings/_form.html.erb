@@ -5,7 +5,7 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :description, as: :rich_text_area%>
-    <%= f.input :condition, collection: @conditions.each {|option| [format_condition(option)]} %> 
+    <%= f.input :condition, collection: @conditions, as: :radio_buttons%> 
     <%= f.input :price %> 
     <%= f.input :category_id, collection: @categories.map {|c| [c.name, c.id]} %> 
     <%=f.file_field :picture %>

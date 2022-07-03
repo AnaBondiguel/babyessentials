@@ -47,6 +47,12 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 ![Homepage](./Homepage.png)
 ![Listingspage](./Listings.png)
 ![Formpage](./form.png)
+![Itempage](./item.png)
+![Paymentpage](./payment.png)
+![Successpage](./success.png)
+![Searchpage](./search.png)
+![Signuppage](./signup.png)
+![Signinpage](./signin.png)
 
 ### Target audience
 Our target audiences are parents

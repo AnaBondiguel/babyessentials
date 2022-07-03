@@ -5,9 +5,9 @@ class Listing < ApplicationRecord
   has_one_attached :picture
  
   enum condition: {
-    very_used_condition: 1,
-    good_used_condition: 2,
-    used_once: 3,
-    brand_new: 4
+    "very used condition": 1,
+    "good used condition": 2,
+    "used once": 3,
+    "brand new": 4
   }
   end

@@ -45,20 +45,10 @@
   <strong>Condition:</strong>
   <%= @listing.condition %>
 </p>
-
+     
 <p>
   <strong>Price: $</strong>
   <%= @listing.price %>
-</p>
-
-<p>
-  <strong>Sold:</strong>
-  <%= @listing.sold %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @listing.category_id %>
 </p>
 
 <% if current_user && current_user.id == @listing.user_id %>
