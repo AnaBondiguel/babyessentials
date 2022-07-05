@@ -41,7 +41,7 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 
 
 ### Sitemap
-![Sitemap_App](sitemap.png)
+![Sitemap_App](sitemap.jpg)
 
 ### Screenshots
 ![Homepage](Homepage.png)
@@ -70,7 +70,7 @@ I used Postgreql database to create and modify data.
 I used Ruby and Rails to build the infrastructure to support to support the two-sided marketplace application. 
 
 # R12. User stories for your app
-As mums, my friends and I want to get rid of our baby items for the rooms because our kids grew up. We don't need our bassinet, baby capsule, baby walk, baby bouncer etc. anymore, but they are still in very good condition (some baby products have never been used or used once). We think other parents who have newborn babies may need these baby items. At the same time, we also would like to purchase toddler or kid essentials from other parents, such as bunk bed, bookshelf, desk, raincoat, bike etc. Therefore, we can recycle those baby/kid items in our community and be environmentally friendly. 
+As mums, my friends and I want to get rid of our baby items because our kids grew up. We don't need our bassinet, baby capsule, baby walk, baby bouncer etc. anymore, but they are still in very good condition (some baby products have never been used or used once). We think other parents who have newborn babies may need these baby items. At the same time, we also would like to purchase toddler or kid essentials from other parents, such as bunk bed, bookshelf, desk, raincoat, bike etc.  and help each other out. We can also recycle those baby/kid items in our community and be environmentally friendly.
 
 # R13. Wireframes for your app
 

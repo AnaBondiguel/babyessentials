@@ -35,10 +35,10 @@ class ListingsController < ApplicationController
       cancel_url: "#{root_url}/listings"
     )
     @session_id = session.id
+ 
     end
   end
-
-  # GET /listings/new
+ 
   def new
     @listing = Listing.new
   end
@@ -50,7 +50,7 @@ class ListingsController < ApplicationController
   # POST /listings or /listings.json
   def create
     @listing = Listing.new(listing_params)
-    @listing.user_id = current_user.id
+    @listing.user = current_user
     
     respond_to do |format|
       if @listing.save
@@ -85,6 +85,18 @@ class ListingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # def place_order
+  #   Order.create(
+  #     listing_id: @listing.id,
+  #     seller_id: @listing.user_id,
+  #     buyer_id: current_user.id
+  #   )
+
+  #   @listing.update(sold: true)
+
+  #   redirect_to orders_success_path
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

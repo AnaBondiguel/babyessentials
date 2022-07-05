@@ -4,7 +4,7 @@
   <% if @listing.picture.attached? %>
      <%= image_tag @listing.picture, alt: @listing.title, class: "image" %>
   <% else %> 
-     <%= image_tag "baby2.jpeg", alt: @listing.title, class: "image" %> 
+     <%= image_tag "baby2.jpg", alt: @listing.title, class: "image" %> 
   <% end %>  
 </div>  
 
@@ -13,7 +13,8 @@
 <% elsif current_user && current_user.id == @listing.user_id %> 
     <h1>Can't purchase your own item</h1>
 <% elsif current_user %> 
-    <button data-stripe="payment"> Buy Now! <%= number_to_currency(@listing.price) %></button> 
+     <button data-stripe="payment"> Buy Now! <%= number_to_currency(@listing.price) %></button>  
+ 
 <% else %> 
     <h1>Please log in to make a purchase</h1> 
 <% end %> 
