@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:webhook]
 
   def success
+
   end
 
   def bought
@@ -15,31 +16,37 @@ class OrdersController < ApplicationController
   end
 
   def webhook
-    payment_id = params[:data][:object][:payment_intent]
-    if p params[:type] == "checkout.session.completed"
-      @listing = Listing.find(params[:id])
-      @listing.update(sold: true)
-      redirect_to orders_success_path
-    end
+    #  puts "webhook running" 
 
-    payment = Stripe::PaymentIntent.retrieve(payment_id)
-    listing_id = payment.metadata.listing_id
-    # user_id = payment.metadata.user_id
-     p "Listing id" + listing_id
-    #p "user id" + user_id
-     render plain: "Success"
-  end
+    if  params[:type] == "checkout.session.completed"
+      # puts "if statement"
+           #getting listing id
+      payment_id = params[:data][:object][:payment_intent]
+      payment = Stripe::PaymentIntent.retrieve(payment_id)
+      listing_id = payment.metadata.listing_id
+      
+       @listing = Listing.find(listing_id)
+      #  puts "#{@listing.id}"
+      #  puts "#{@listing.sold}"
+       @listing.update(sold: true)
+      #  puts "#{@listing.sold}"
+    #   Order.create(
+    #     listing_id: listing_id,
+    #     puts "#{@listing.id}"
+    #     seller_id: @listing.user_id,
+    #     puts "#{@listing.user_id}"
+    #     buyer_id: current_user.id
+        
+    #   )
+
+    # end
+    end
+    
+
+   end
 end
 
-  #  def place_order
-  #    Order.create(
-  #      listing_id: @listing.id,
-  #      seller_id: @listing.user_id,
-  #      buyer_id: current_user.id
-  #    )
-  #  @listing.update(sold: true)
-  #  redirect_to orders_success_path
-  #  end
-    #  <%= button_to "Buy me!", place_order_path %> 
+ 
+
 
   

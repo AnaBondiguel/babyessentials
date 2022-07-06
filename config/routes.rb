@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'pages#home'
 
-  post "listings/:id/order", to: "listings#place_order", as: "place_order"
-
+  post "orders/:id/order", to: "orders#webhook", as: "webhook"
   get 'orders/success'
   post "/orders/webhook", to: "orders#webhook"
   get 'search', to: "listings#search"
