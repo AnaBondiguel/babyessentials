@@ -9,17 +9,18 @@
 </head>
 
 <p id="notice"><%= notice %></p>
-
+<%# this creates a card listing page with Bootstrap-SCSS %>
 <div class="row">
     <% @listings.each do |listing| %>
         <div class="col-md-4">
             <div class="card" style="width: 35rem;">
+            <%# It shows attached image in the listing page. If users haven't uploaded an image, they will get a default image for their product %>
             <% if listing.picture.attached? %>
                  <%= image_tag listing.picture, class:"card-img-top"%>
             <% else %> 
                  <%= image_tag "baby2.jpg", class: "card-img-top" %> 
             <% end %>  
-            
+            <%# create links for show more, edit, and delete %>
             <div class="card-body">
                 <h5 class="card-title"><%= listing.title %></h5>
                 <p class="card-text">$<%= listing.price%> 

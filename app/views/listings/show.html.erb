@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="col-md-6">
+<%# It shows attached image in the item show page. If users haven't uploaded an image, they will get a default image for their listing product %>
 <div>
   <% if @listing.picture.attached? %>
      <%= image_tag @listing.picture, alt: @listing.title, class: "image" %>
@@ -8,6 +9,7 @@
   <% end %>  
 </div>  
 
+<%# This if statment helps users to identify which listing item has been sold, or is listed by themselves, or is still available to buy %>
 <% if @listing.sold %>
     <h1>SOLD</h1> 
 <% elsif current_user && current_user.id == @listing.user_id %> 
@@ -19,8 +21,9 @@
     <h1>Please log in to make a purchase</h1> 
 <% end %> 
 
+<%# take users back to the listing page %>
 <%= link_to 'Back', listings_path, class: 'button' %>
-  
+  <%# javascript for Stripe  %>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
   document.querySelector("[data-stripe='payment']").addEventListener("click", () => {
@@ -31,7 +34,7 @@
   });
 </script> 
 
-
+<%# listing content that users can read from the item show page %>
 <p>
   <strong>Title:</strong>
   <%= @listing.title %>
@@ -51,11 +54,11 @@
   <strong>Price: $</strong>
   <%= @listing.price %>
 </p>
-
+<%# add edit link %>
 <% if current_user && current_user.id == @listing.user_id %>
   <%= link_to 'Edit', edit_listing_path(@listing), class: "link-listing" %> 
 <% end %> 
-
+<%# users can go previous and next page with the links%>
 <div>
   <% if @listing[:id] > 1 && @listing[:id] < 10 %>
     <%= link_to "Previous", listing_path(@listing[:id] - 1), class: "link-listing" %> |

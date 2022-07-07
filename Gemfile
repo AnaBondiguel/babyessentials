@@ -60,3 +60,4 @@ gem 'omniauth-rails_csrf_protection'
 gem 'bootstrap', '~> 4.5.2'
 gem 'jquery-rails'
 gem 'simple_form'
+gem "aws-sdk-s3", "~> 1.114"

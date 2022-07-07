@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[facebook]
 
+  # implement the from_omniauth method in the model 
   def self.from_omniauth(auth)
     # auth hash info can be found here:
     # https://github.com/simi/omniauth-facebook#auth-hash
@@ -25,6 +26,7 @@ class User < ApplicationRecord
     end
   end
 
+  # implement new_with_session in the model. Copy the facebook email if available:
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]

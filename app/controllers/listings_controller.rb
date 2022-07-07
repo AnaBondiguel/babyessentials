@@ -14,6 +14,8 @@ class ListingsController < ApplicationController
   end
 
   # GET /listings/1 or /listings/1.json
+  #create a Stripe session to store which user is going to buy for which item 
+  #all the information is sent in the session and Stripe will connect the session with the business in my strip account
   def show
     if current_user
     session = Stripe::Checkout::Session.create(
@@ -21,10 +23,7 @@ class ListingsController < ApplicationController
       customer_email: current_user.email,
       line_items: [{
         name: @listing.title,
-        images: ["https://www.talk-business.co.uk/wp-content/uploads/2019/05/filadendron-iStock-1.jpg"],
-
-        # images: [url_for(@listing.picture)],
-         
+        images: [url_for(@listing.picture)],
         amount: (@listing.price * 100).to_i,
         currency: 'aud',
         quantity: 1,

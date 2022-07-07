@@ -1,8 +1,8 @@
 # R7. Identification of the problem you are trying to solve by building this particular marketplace app.
-I’d like to build a two-sided market for helping parents to sell and buy the second-hand baby essentials. Kids grow up quickly. Many baby essentials like bassinet and car seat, are still quite new after six-months to three years. Parents can get rid of the baby items when they don’t need them any more without losing too much money. They also can buy a cheaper second-hand products for what they need now.
+I’d like to build a two-sided marketplace to help parents to sell and buy the second-hand baby essentials. Kids grow up quickly. Many baby essentials like bassinet and car seat, are still quite new after six-months to three years. Parents can get rid of the baby items when they don’t need them any more without losing too much money. They also can buy a cheaper second-hand products for what they need now, such as kids' desk, bike etc.
 
 # R8. Why is it a problem that needs solving?
-Many parents experienced that they had a lot of baby essentials left in their storage room when their kids grew up. It occupies so much spaces at home. If parents discard themw, it’s wasted and not environmental friendly. Also, some parents would buy things before their baby born, such as cot, pram, and sleeping bags etc. However, it might be end up that they haven’t used them at all or only used several times or the products weren’t not right, they need to buy another type for the replacement. In order to save environment and parents money, I’d like to build a two-market place for parents to buy and sell their baby essentials. 
+Many parents experienced that they had a lot of baby essentials left in their storage room when their kids grew up. It occupies so much spaces at home. If parents discard them, it’s wasted and not environmental friendly. Also, some parents would buy things before their baby born, such as cot, pram, and sleeping bags etc. However, it might be end up that they haven’t used them at all or only used several times when the products weren’t not right. They need to buy another type for the replacement. In order to save environment and parents money, I’d like to build a two-sided marketplace application for parents to buy and sell their baby essentials. 
 
 # R9. A link (URL) to your deployed app (i.e. website)
 [BabyEssentials_HerokuApp](https://babyessentials.herokuapp.com/)
@@ -72,6 +72,8 @@ I used Ruby and Rails to build the infrastructure to support to support the two-
 # R12. User stories for your app
 As mums, my friends and I want to get rid of our baby items because our kids grew up. We don't need our bassinet, baby capsule, baby walk, baby bouncer etc. anymore, but they are still in very good condition (some baby products have never been used or used once). We think other parents who have newborn babies may need these baby items. At the same time, we also would like to purchase toddler or kid essentials from other parents, such as bunk bed, bookshelf, desk, raincoat, bike etc.  and help each other out. We can also recycle those baby/kid items in our community and be environmentally friendly.
 
+We want to have an application to have 1) our accounts to create, edit and delete the listing products, 2) the listings where we can buy and sell the products, 3)the payment function that we can make transaction to puchase the products. 
+
 # R13. Wireframes for your app
 
 # R14. An ERD for your app
@@ -97,7 +99,7 @@ I used Stripe to handle credit card data and redirect the customer's browser aft
 I used Webhook to track customers payment if the customers loss internect connection after payment and verify the person has truly made a purchase and isn't just faking the data in the URL. Firstly, I went to Stripe dashboard and added endpoint, and registered the account in Ultrahook to get the API key. Ultrahook is a gem that provides an internet reachable URL from our computer that then forwards the request on to our localhost. Secondly, I installed the gem for Ultrahook and run ultrahook in my terminal (ultrahook stripe 3000), then copied and pasted the URL into the endpoint in the Stripe dashboard. Thridly, I added the Webhook route in the route.rb. Finally, I added the Webhook action in the orders controller.
 
 ### Facebook for application login feature
-I followed the documentation [https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview) to set gems and code on my VS code. I got App ID and App scret from the developer Facebook and added them into my config/initializers/devise.rb. In addition, I created a omniauth_callbacks_controller and make my model (user.rb) omniaythable. Moreover, I went to the route.rb and added route for Omniauth and added Facebook authentication into my _nav.html.erb. Then I implemented the callback as an action for Facebook provider in the omniauth_callbacks_controller. Furthermore, I implemented the from_omniauth method in my model (user.rb). This method tries to find an existing user by the provider and uid fields. If no user is found, a new one is created with a random password and some extra information. I also implemented new_with_session in my model to copy the Facebook email if available. This is because Devise's RegistrationsController by default calls User.new_with_session before building a resource. This means that, we need to copy data from session whenever a user is initialized before sign up.
+I followed the documentation [OmniAuth_Facebook](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview) to set gems and code on my VS code. I got App ID and App scret from the developer Facebook and added them into my config/initializers/devise.rb. In addition, I created a omniauth_callbacks_controller and make my model (user.rb) omniaythable. Moreover, I went to the route.rb and added route for Omniauth and added Facebook authentication into my _nav.html.erb. Then I implemented the callback as an action for Facebook provider in the omniauth_callbacks_controller. Furthermore, I implemented the from_omniauth method in my model (user.rb). This method tries to find an existing user by the provider and uid fields. If no user is found, a new one is created with a random password and some extra information. I also implemented new_with_session in my model to copy the Facebook email if available. This is because Devise's RegistrationsController by default calls User.new_with_session before building a resource. This means that, we need to copy data from session whenever a user is initialized before sign up.
 
 # R17. Describe your projects models in terms of the relationships (active record associations) they have with each other
 1. A user account has none or many orders for the listing items (people may hold an account but not have to buy or sell anything). However, an order has to have a user_id (people can buy or sell without a user account). The relationships are associated through ‘user_id’ on the Users table and creating ‘buyer_id’ and ‘seller_id’ through other tables. 
@@ -112,14 +114,27 @@ I followed the documentation [https://github.com/heartcombo/devise/wiki/OmniAuth
 
 6. A payment has to have an order (users can't pay without an order), and an order has to have a payment (users can't order items without payment). The relationships are associated through ‘payment_id’ on the payments table.
 
+7. Every listing has to have one active storage attachment (e.g. if users didn't attach an image, they will get a default image for their listing), but active storage attachment must have one or many listings. The relationships are associated through ‘attachment_id’ on the active storage attachments table.
+
+8. Every listing has none or only one action text rich text (e.g. users don't need to write the description of their item), but action text rich text must have one or many listings. The relationships are associated through ‘rich_text_id’ on the action text rich texts table.
+
+9. One active storage attachment has to have one active storage blob, but one active storage blob must have one or many active storage attachments. The relationships are associated through ‘blob_id’ on the active storage blobs table.
+
+10. One active variant record has to have one active storage blob, but one active storage blob must have one or many active storage variant records. The relationships are associated through ‘blob_id’ on the active storage bolbs table.
+
 # R18. Discuss the database relations to be implemented in your application
 Entities and attributes
-1. Listings: title, description, condition, price, sold, user_id, category_id
-2. Users: email, username, password
-3. Orders: listing_id, buyer_id, seller_id
-4. Categories: name
-5. Facebook: username
-6. Payments: title, price
+1. Listings: title, description, condition, price, sold, user_id, category_id, listing_id
+2. Users: email, username, password, user_id
+3. Orders: listing_id, buyer_id, seller_id, order_id
+4. Categories: name, category_id
+5. Facebook: username, facebook_id
+6. Payments: title, price, payment_id
+7. Active_Storage_Attachments: name, record_type, record_id, blobs_id, create_at, attachment_id
+8. Action_Text_Rich_Texts: name, text, record_type, record_id, create_at, update_at, rich_text_id
+9. Active_Storage_Blobs: key, filename, content_type, metadata, service_name, bytez_size, checksum, created_at, blob_id
+10. Active_Storage_Variant_Records: blob_id, variation_digest, variant_record_id
+
 
 The relationship between users and orders
 •	A user has none or many orders
@@ -143,7 +158,23 @@ The relationship between Facebook and users
 
 The relationship between payments and orders
 •	A payment has one order
-•	A order has one payment
+•	An order has one payment
+
+The relationship between listings and active storge attachments
+•	A listing has one active storage attachment
+•	An active storage attachment has many listings
+
+The relationship between listings and action text rich texts
+•	A listing has one or none action text rich text
+•	An action text rich text has many listings
+
+The relationship between active storage blobs and active storge attachments
+•	An active storage attachment has one active storage blob
+•	An active storage blob has many active storge attachments
+
+The relationship between active storage blobs and active storage variant records
+•	An active storage variant record has one active storage blob
+•	An active storage blob has many active storge variant records
 
 Users model
 has_many :listings
@@ -164,3 +195,8 @@ belongs_to :category
 ![ERDBabyEssentails](ERD.png)
 
 # R20. Describe the way tasks are allocated and tracked in your project
+I used Trello to track and allocate my tasks in my project. I put them into small tasks and built a card for each of them. I labelled them into different colours for three different types of tasks: Tasks before application development, important tasks, and Readme documentation. I set up checklist for each Trello card and also the timeframe for each task. I put my cards into three stages: planning, doing, and done. Each task moved from planning, to doing, and then done stages. 
+
+Please see the details what I have done for my project in my Trello cards.
+[BabyEssentials_Trello](https://trello.com/b/shJmPj7B/two-sided-market-place-baby-essentails)
+
