@@ -75,7 +75,7 @@ As mums, my friends and I want to get rid of our baby items because our kids gre
 # R13. Wireframes for your app
 
 # R14. An ERD for your app
-![ERDBabyEssentails](ERD.jpg)
+![ERDBabyEssentails](ERD.png)
 
 # R15. Explain the different high-level components (abstractions) in your app
 My two-sided marketplace application followed a typical Rails application architecture - Model View Controller (MVC). MVC has three main parts: model, view, and controller to serve a specific function and provide modularity.
@@ -91,13 +91,13 @@ The controller is the brain or the orchestrator. By default, only the Applicatio
 I used Heroku for application deployment. Firstly, I created my account for Heroku. Secondly, I connected my baby essentials repository to Heroku so that I can git push application for updating my repository as well as the Heroku stage app. Finally, I would promote my stage app to the production. 
 
 ### Stripe for payment service
-I used Stripe to handle credit card data and redirect the customer's browser after payment is completed. Firstly, I setup Stripe account and got the API keys. Secondly, I bundled Stripe gem and setup the credentials file, and also created a Stripe.rb file in config/initializer. Thirdly, I created Stripe session in the listings_controller and added the "buy" button and the Stripe string in the views/listings/show.html.erb. Fourthly, I created payment success in the orders_controller and views/orders/success.html.erb. Finally, I defined routes for the "payment success" view and ensured the root route that was correct. Then I did check whether the payment with a test credit card was correct or not. 
+I used Stripe to handle credit card data and redirect the customer's browser after payment is completed. Firstly, I setup Stripe account and got the publishable and secret API keys. Secondly, I bundled Stripe gem and setup the credentials file, and also created a stripe.rb file in config/initializer. Thirdly, I created Stripe session in the listings_controller, so the show action will render the single order and I can add "buy now" button there. The session will store which user is going to buy item for which listing. All this information must be sent in the session and Stripe will connect the created session with our business in our Stripe account. Fourthly, I added the "buy now" button and the stripe string in the views/listings/show.html.erb. I want to render a "but now" button and run an order when button is clicked. This step have been done with Javascript. Fifththly, I created payment success in the orders_controller and views/orders/success.html.erb. Finally, I defined routes for the "payment success" view and ensured the root route that was correct. Then I did check whether the payment with a test credit card was correct or not. 
 
 ### Webhook for tracking the purchase
-I used Webhook to track customers payment if the customers loss internect connection after payment and verify the person has truly made a purchase and isn't just faking the data in the URL. Firstly, I went to Stripe dashboard and added endpoint, and registered the account in Ultrahook to get the API key. Secondly, I installed gem for Ultrahook and run ultrahook in my terminal (ultrahook stripe 3000), then copied and pasted the URL into the endpoint in the Stripe dashboard. Thridly, I added the Webhook route in route.rb. Finally, I added the Webhook action in the orders controller.
+I used Webhook to track customers payment if the customers loss internect connection after payment and verify the person has truly made a purchase and isn't just faking the data in the URL. Firstly, I went to Stripe dashboard and added endpoint, and registered the account in Ultrahook to get the API key. Ultrahook is a gem that provides an internet reachable URL from our computer that then forwards the request on to our localhost. Secondly, I installed the gem for Ultrahook and run ultrahook in my terminal (ultrahook stripe 3000), then copied and pasted the URL into the endpoint in the Stripe dashboard. Thridly, I added the Webhook route in the route.rb. Finally, I added the Webhook action in the orders controller.
 
 ### Facebook for application login feature
-I followed the documentation [https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview) to set gems and code on my VS code. I got App ID and App scret from the developer Facebook. 
+I followed the documentation [https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview) to set gems and code on my VS code. I got App ID and App scret from the developer Facebook and added them into my config/initializers/devise.rb. In addition, I created a omniauth_callbacks_controller and make my model (user.rb) omniaythable. Moreover, I went to the route.rb and added route for Omniauth and added Facebook authentication into my _nav.html.erb. Then I implemented the callback as an action for Facebook provider in the omniauth_callbacks_controller. Furthermore, I implemented the from_omniauth method in my model (user.rb). This method tries to find an existing user by the provider and uid fields. If no user is found, a new one is created with a random password and some extra information. I also implemented new_with_session in my model to copy the Facebook email if available. This is because Devise's RegistrationsController by default calls User.new_with_session before building a resource. This means that, we need to copy data from session whenever a user is initialized before sign up.
 
 # R17. Describe your projects models in terms of the relationships (active record associations) they have with each other
 1. A user account has none or many orders for the listing items (people may hold an account but not have to buy or sell anything). However, an order has to have a user_id (people can buy or sell without a user account). The relationships are associated through ‘user_id’ on the Users table and creating ‘buyer_id’ and ‘seller_id’ through other tables. 
@@ -161,6 +161,6 @@ belongs_to :user
 belongs_to :category
 
 # R19. Provide your database schema design
-![ERDBabyEssentails](ERD.jpg)
+![ERDBabyEssentails](ERD.png)
 
 # R20. Describe the way tasks are allocated and tracked in your project

@@ -22,6 +22,9 @@ class ListingsController < ApplicationController
       line_items: [{
         name: @listing.title,
         images: ["https://www.talk-business.co.uk/wp-content/uploads/2019/05/filadendron-iStock-1.jpg"],
+
+        # images: [url_for(@listing.picture)],
+         
         amount: (@listing.price * 100).to_i,
         currency: 'aud',
         quantity: 1,
@@ -92,9 +95,7 @@ class ListingsController < ApplicationController
   #     seller_id: @listing.user_id,
   #     buyer_id: current_user.id
   #   )
-
   #   @listing.update(sold: true)
-
   #   redirect_to orders_success_path
   # end
 
