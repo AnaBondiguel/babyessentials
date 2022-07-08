@@ -18,31 +18,28 @@ class OrdersController < ApplicationController
   def webhook
     #  puts "webhook running" 
 #if statement for webhook completed checkout session, then it should get listing_it for sold item, get listing sold updated.
-    if  params[:type] == "checkout.session.completed" 
+    if params[:type] == "checkout.session.completed" 
       # puts "if statement"
 #getting listing id
       payment_id = params[:data][:object][:payment_intent]
       payment = Stripe::PaymentIntent.retrieve(payment_id)
       listing_id = payment.metadata.listing_id
 #finding the sold item listing_id from database
-       @listing = Listing.find(listing_id)
-       puts "#{@listing.id}"
-       puts "#{@listing.sold}"
-       @listing.update(sold: true)
-        puts "#{@listing.sold}"
-#updating the bought and sold listings with the information about sold items
-     @order = Order.create(
+      @listing = Listing.find(listing_id)
+      # puts "#{@listing.id}"
+      # puts "#{@listing.sold}"
+#updating the sold item
+      @listing.update(sold: true)
+      # puts "#{@listing.sold}"
+#updating bought and sold items 
+      @order = Order.create(
         listing_id: @listing.id,
         seller_id: @listing.user_id,
-        buyer_id: current_user.id
+        buyer_id: payment.metadata.buyer_id
       )
-    #   # puts "order create!!!"
-    #   # puts "#{@order.seller_id}"
-    #   # Below the @order code, the messages from puts are not printed. However, the puts statement above prints msg. This means that @order does nothing.
-    @order.update(sold: true)
-      redirect_to orders_success_path
     end
    end
+   
 end
 
  

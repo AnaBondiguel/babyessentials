@@ -8,7 +8,7 @@ Many parents experienced that they had a lot of baby essentials left in their st
 [BabyEssentials_HerokuApp](https://babyessentials.herokuapp.com/)
 
 # R10. A link to your GitHub repository (repo).
-[BabyEssentials_GithubRepository](git@github.com:AnaBondiguel/babyessentials.git)
+[BabyEssentials_GithubRepository](https://github.com/AnaBondiguel/babyessentials.git)
 
 # R11. Description of your marketplace app (website), including:
 ### Purpose

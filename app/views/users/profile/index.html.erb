@@ -1,0 +1,14 @@
+<div class="jumbotron">
+    <div class="col-sm-6">
+        <h1>Profile</h1>
+            <h3>Username: <%= @current_user.username %></h3>
+            <h3>User ID: <%= @current_user.id %></h3>
+            <h3>User Email: <%= @current_user.email %></h3>
+            <br> <br>
+  
+
+            <h3>Please click the links to view your bought and sold items in the past</h3>
+            <%= link_to "Bought Items", orders_bought_path, class: "link-profile"  %> | <%= link_to "Sold Items", orders_sold_path, class: "link-profile" %>
+     </div>
+ </div>
+

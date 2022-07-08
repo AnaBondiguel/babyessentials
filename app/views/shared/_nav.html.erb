@@ -10,13 +10,10 @@
            <%= link_to "Home", root_path, class:"nav-link active"%>
         </li>
         <li class="nav-item">
+            <%= link_to "Profile", users_profile_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
            <%= link_to "Listings", listings_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-           <%= link_to "Bought Items", orders_bought_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-           <%= link_to "Sold Items", orders_sold_path, class:"nav-link" %>
         </li>
         <li class="nav-item">
            <%= link_to 'New Listing', new_listing_path, class:"nav-link" %> 

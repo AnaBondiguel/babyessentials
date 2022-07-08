@@ -10,13 +10,41 @@ class ListingsController < ApplicationController
   end
 # Create a search bar for webpages
   def search
-   @listings = Listing.where("title LIKE ?","%" + params[:q] + "%")
+    @listings = Listing.where("title LIKE ?","%" + params[:q] + "%")
   end
 
   # GET /listings/1 or /listings/1.json
   #create a Stripe session to store which user is going to buy for which item 
   #all the information is sent in the session and Stripe will connect the session with the business in my strip account
   def show
+    # @listings = Listing.all
+    # # current_index = @listings.find_index(@listing)
+    # listings_array = @listings.to_ary()
+    # prev_index = nil
+    # next_index = nil
+    # current_index = nil
+
+    # listings_array.each_with_index |index, listing| do
+    #   if listing.id == @listing.id then
+    #     current_index = index
+    #   end
+    # end
+
+    # if current_index == nil then
+    #   # 404
+    # end
+    
+    # if current_index > 1 then
+    #   prev_index = current_index - 1
+    #   @prev_link = @listings[prev_index]
+    # end
+
+    # if current_index < listings_array.length - 1 then
+    #   next_index = current_index + 1
+    #   @next_link = @listings[next_index]
+    # end
+  
+
     if current_user
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -31,6 +59,7 @@ class ListingsController < ApplicationController
       payment_intent_data: {
         metadata: { 
           listing_id: @listing.id,
+          buyer_id: current_user.id,
         }
       },
       success_url: "#{root_url}/orders/success?listingId=#{@listing.id}",
