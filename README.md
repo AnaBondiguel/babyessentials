@@ -23,21 +23,23 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 
 4. Using Active Storage for uploading images
 
-5. Application deployment on Heroku
+5. Having AWS S3 Bucket feature to storage my uplodaded images
 
-6. Using Stripe for a payment system
+6. Application deployment on Heroku
 
-7. Creating a search bar for users to find their items 
+7. Using Stripe for a payment system
 
-8. Having a form to create new listings with the gem of simply_form
+8. Creating a search bar for users to find their items 
 
-9. Users can use their Facebook account to log into the account of the application with the gem of Omniauth-Facebook
+9. Having a form to create new listings with the gem of simply_form
 
-10. I applied bootstrap-scss: card into my view of the listings. Users can have better experiences to view the products online.
+10. Users can use their Facebook account to log into the account of the application with the gem of Omniauth-Facebook
 
-11. Users can view what they bought and sold in the past in the links of bought items and sold items.
+11. I applied bootstrap-scss: card into my view of the listings. Users can have better experiences to view the products online.
 
-12. Using Webhook to track customers' payment if the customers loss internet connection after payment and verify the person has truly made a purchase and isn't just faking the data in the URL.
+12. Users can view what they bought and sold in the past in the links of bought items and sold items.
+
+13. Using Webhook to track customers' payment if the customers loss internet connection after payment and verify the person has truly made a purchase and isn't just faking the data in the URL.
 
 
 ### Sitemap
@@ -68,6 +70,12 @@ I used html.erb in the views to structure the web pages.
 I used Postgreql database to create and modify data.
 
 I used Ruby and Rails to build the infrastructure to support to support the two-sided marketplace application. 
+
+I used AWS S3 Bucket feature to storage my uplodaded images
+
+I used Stripe and webhook for a payment system
+
+I allowed users can use their Facebook account to log in my application
 
 # R12. User stories for your app
 As mums, my friends and I want to get rid of our baby items because our kids grew up. We don't need our bassinet, baby capsule, baby walk, baby bouncer etc. anymore, but they are still in very good condition (some baby products have never been used or used once). We think other parents who have newborn babies may need these baby items. At the same time, we also would like to purchase toddler or kid essentials from other parents, such as bunk bed, bookshelf, desk, raincoat, bike etc.  and help each other out. We can also recycle those baby/kid items in our community and be environmentally friendly.
@@ -100,6 +108,9 @@ I used Webhook to track customers payment if the customers loss internect connec
 
 ### Facebook for application login feature
 I followed the documentation [OmniAuth_Facebook](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview) to set gems and code on my VS code. I got App ID and App scret from the developer Facebook and added them into my config/initializers/devise.rb. In addition, I created a omniauth_callbacks_controller and make my model (user.rb) omniaythable. Moreover, I went to the route.rb and added route for Omniauth and added Facebook authentication into my _nav.html.erb. Then I implemented the callback as an action for Facebook provider in the omniauth_callbacks_controller. Furthermore, I implemented the from_omniauth method in my model (user.rb). This method tries to find an existing user by the provider and uid fields. If no user is found, a new one is created with a random password and some extra information. I also implemented new_with_session in my model to copy the Facebook email if available. This is because Devise's RegistrationsController by default calls User.new_with_session before building a resource. This means that, we need to copy data from session whenever a user is initialized before sign up.
+
+### AWS S3 Bucket feature to storage my uplodaded images
+I used AWS S3 Bucket to storage my uploaded images. Firstly, I created an account with AWS and went to S3 to create a bucket. Then I went to Iam to add and create user to get my access key ID and secret access key. I put those keys into my credential.yml. Secondly, I bundled add aws-sdk-s3, and then went to config/storage.yml file to eidt the settings that are related to Amazon. Thirdly, I needed to go to environments/development.rb and production.rb to change config.active_storage.service from local to amazon. Finally, I could go back to my app and create some new listings with attached images. When I refreshed the page of AWS S3 bucket, I could see the image files inside of my bucket.
 
 # R17. Describe your projects models in terms of the relationships (active record associations) they have with each other
 1. A user account has none or many orders for the listing items (people may hold an account but not have to buy or sell anything). However, an order has to have a user_id (people can buy or sell without a user account). The relationships are associated through ‘user_id’ on the Users table and creating ‘buyer_id’ and ‘seller_id’ through other tables. 

@@ -36,12 +36,11 @@ class OrdersController < ApplicationController
         seller_id: @listing.user_id,
         buyer_id: current_user.id
       )
-      # puts "order create!!!"
-      # puts "#{@order.seller_id}"
-      # Below the @order code, the messages from puts are not printed. However, the puts statement above prints msg. This means that @order does nothing.
-      # redirect_to orders_success_path
-     @order.bought_orders
-     puts "#{@order.bought}"
+    #   # puts "order create!!!"
+    #   # puts "#{@order.seller_id}"
+    #   # Below the @order code, the messages from puts are not printed. However, the puts statement above prints msg. This means that @order does nothing.
+    @order.update(sold: true)
+      redirect_to orders_success_path
     end
    end
 end

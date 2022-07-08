@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get 'orders/success'
   get 'orders/bought'
   get 'orders/sold'
   resources :listings
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'pages#home'
- 
-  # post "orders/:id/order", to: "orders#webhook", as: "webhook"
+  
+  post "listings/:id/order", to: "listings#place_order", as: "place_order"
+
   get 'orders/success'
   post "/orders/webhook", to: "orders#webhook"
   get 'search', to: "listings#search"
