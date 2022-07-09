@@ -61,4 +61,4 @@ gem 'bootstrap', '~> 4.5.2'
 gem 'jquery-rails'
 gem 'simple_form'
 gem "aws-sdk-s3", "~> 1.114"
-gem ultrahook
+gem "ultrahook", "~> 1.0"
