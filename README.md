@@ -43,19 +43,22 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 
 
 ### Sitemap
-![Sitemap_App](sitemap.jpg)
+![Sitemap_App](/images/sitemap.jpg)
 
 ### Screenshots
-![Homepage](homepage.png)
-![Listingspage](Listings.png)
-![Formpage](form.png)
-![Itempage](item.png)
-![Paymentpage](payment.png)
-![Successpage](success.png)
-![Searchpage](search.png)
-![Signuppage](signup.png)
-![Signinpage](signin.png)
-![Signinpage](forgotpassword.png)
+![HomePage](/images/homepage.png)
+![ProfilePage](/images/profile.png)
+![BoughtItemPage](/images/boughtitem.png)
+![SoldItemPage](/images/solditem.png)
+![ListingsPage](/images/listing.png)
+![FormPage](/images/newlisting.png)
+![ItemsPage](/images/items.png)
+![SearchPage](/images/search.png)
+![PaymentPage](/images/payment.png)
+![SuccessPage](/images/success.png)
+![SignUpPage](/images/signup.png)
+![SignInPage](/images/signin.png)
+![PasswordPage](/images/forgotpassword.png)
 
 ### Target audience
 Our target audiences are parents
@@ -85,7 +88,7 @@ We want to have an application to have 1) our accounts to create, edit and delet
 # R13. Wireframes for your app
 
 # R14. An ERD for your app
-![ERDBabyEssentails](ERD.png)
+![ERDBabyEssentails](/images/ERD.png)
 
 # R15. Explain the different high-level components (abstractions) in your app
 My two-sided marketplace application followed a typical Rails application architecture - Model View Controller (MVC). MVC has three main parts: model, view, and controller to serve a specific function and provide modularity.
@@ -203,7 +206,7 @@ belongs_to :user
 belongs_to :category
 
 # R19. Provide your database schema design
-![ERDBabyEssentails](ERD.png)
+![ERDBabyEssentails](/images/ERD.png)
 
 # R20. Describe the way tasks are allocated and tracked in your project
 I used Trello to track and allocate my tasks in my project. I put them into small tasks and built a card for each of them. I labelled them into different colours for three different types of tasks: Tasks before application development, important tasks, and Readme documentation. I set up checklist for each Trello card and also the timeframe for each task. I put my cards into three stages: planning, doing, and done. Each task moved from planning, to doing, and then done stages. 
