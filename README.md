@@ -46,7 +46,7 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 ![Sitemap_App](sitemap.jpg)
 
 ### Screenshots
-![Homepage](Homepage.png)
+![Homepage](homepage.png)
 ![Listingspage](Listings.png)
 ![Formpage](form.png)
 ![Itempage](item.png)

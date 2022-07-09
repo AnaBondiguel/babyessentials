@@ -10,6 +10,9 @@
 
 <p id="notice"><%= notice %></p>
 <%# this creates a card listing page with Bootstrap-SCSS %>
+<div class="col-md-6">
+    <h1>Listing Products</h1>
+</div>
 <div class="row">
     <% @listings.each do |listing| %>
         <div class="col-md-4">
@@ -29,13 +32,10 @@
                 <% if current_user && current_user.id == listing.user_id %>
                 <p><%= link_to 'Edit', edit_listing_path(listing) %> | <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></p>
                 <% end %>
- 
+            </div>
+            </div>
         </div>
-     </div>
-    </div>
     <% end %>
 </div>
-
 <br>
-
 </html>

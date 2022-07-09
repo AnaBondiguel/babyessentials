@@ -17,7 +17,33 @@ class ListingsController < ApplicationController
   #create a Stripe session to store which user is going to buy for which item 
   #all the information is sent in the session and Stripe will connect the session with the business in my strip account
   def show
-    # @listings = Listing.all
+
+    if current_user
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      customer_email: current_user.email,
+      line_items: [{
+        name: @listing.title,
+        images: [url_for(@listing.picture)],
+        amount: (@listing.price * 100).to_i,
+        currency: 'aud',
+        quantity: 1,
+      }],
+      payment_intent_data: {
+        metadata: { 
+          listing_id: @listing.id,
+          buyer_id: current_user.id,
+        }
+      },
+      success_url: "#{root_url}/orders/success?listingId=#{@listing.id}",
+      cancel_url: "#{root_url}/listings"
+    )
+    @session_id = session.id
+ 
+    end
+
+
+       # @listings = Listing.all
     # # current_index = @listings.find_index(@listing)
     # listings_array = @listings.to_ary()
     # prev_index = nil
@@ -43,31 +69,6 @@ class ListingsController < ApplicationController
     #   next_index = current_index + 1
     #   @next_link = @listings[next_index]
     # end
-  
-
-    if current_user
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      customer_email: current_user.email,
-      line_items: [{
-        name: @listing.title,
-        images: [url_for(@listing.picture)],
-        amount: (@listing.price * 100).to_i,
-        currency: 'aud',
-        quantity: 1,
-      }],
-      payment_intent_data: {
-        metadata: { 
-          listing_id: @listing.id,
-          buyer_id: current_user.id,
-        }
-      },
-      success_url: "#{root_url}/orders/success?listingId=#{@listing.id}",
-      cancel_url: "#{root_url}/listings"
-    )
-    @session_id = session.id
- 
-    end
   end
  
   def new

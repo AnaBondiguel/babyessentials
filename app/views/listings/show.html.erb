@@ -60,23 +60,22 @@
 <% end %> 
 <%# users can go previous and next page with the links%>
 
-<div>
+<%# <div>
   <% if defined?(@prev_link) %>
-    <%= link_to "Previous", @prev_link, class: "link-listing" %>
-  <% end %>
-  <% if defined?(@next_link) %>
-    <%= link_to "Next", @next_link, class: "link-listing" %>
-  <% end %>
-</div>
-<%# 
-<div>
-  <% if @listing[:id] > 1 && @listing[:id] < 10 %>
-    <%# <%= link_to "Previous", listing_path(@listing[:id] - 1), class: "link-listing" %> 
-    <%# <%= link_to "Next", listing_path(@listing[:id] + 1), class: "link-listing" %>
-  <%# <% elsif @listing[:id] <= 1 %>
-    <%# <%= link_to "Next", listing_path(@listing[:id] + 1), class: "link-listing" %>
-  <%# <% elsif @listing[:id] >= 10 %>
-    <%# <%= link_to "Previous", listing_path(@listing[:id] - 1), class: "link-listing" %>
+    <%# <%= link_to "Previous", @prev_link, class: "link-listing" %>
+  <%# <% end %> 
+  <%# <% if defined?(@next_link) %> 
+    <%# <%= link_to "Next", @next_link, class: "link-listing" %> 
   <%# <% end %> 
 <%# </div>  %>
+
+<div>
+  <% if @listing[:id] > 1 && @listing[:id] < 100 %>
+    <%= link_to "Previous", listing_path(@listing[:id] - 1), class: "link-listing" %> |
+    <%= link_to "Next", listing_path(@listing[:id] + 1), class: "link-listing" %>
+  <% elsif @listing[:id] <= 1 %>
+    <%= link_to "Next", listing_path(@listing[:id] + 1), class: "link-listing" %>
+  <% elsif @listing[:id] >= 100 %>
+    <%= link_to "Previous", listing_path(@listing[:id] - 1), class: "link-listing" %>
+  <% end %> 
 </div>
