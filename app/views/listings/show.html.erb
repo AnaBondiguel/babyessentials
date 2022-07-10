@@ -16,7 +16,6 @@
     <h1>Can't purchase your own item</h1>
 <% elsif current_user %> 
      <button data-stripe="payment"> Buy Now <%= number_to_currency(@listing.price) %> </button>  
-  
 <% else %> 
     <h1>Please log in to make a purchase</h1> 
 <% end %> 
@@ -58,17 +57,8 @@
 <% if current_user && current_user.id == @listing.user_id %>
   <%= link_to 'Edit', edit_listing_path(@listing), class: "link-listing" %> 
 <% end %> 
+
 <%# users can go previous and next page with the links%>
-
-<%# <div>
-  <% if defined?(@prev_link) %>
-    <%# <%= link_to "Previous", @prev_link, class: "link-listing" %>
-  <%# <% end %> 
-  <%# <% if defined?(@next_link) %> 
-    <%# <%= link_to "Next", @next_link, class: "link-listing" %> 
-  <%# <% end %> 
-<%# </div>  %>
-
 <div>
   <% if @listing[:id] > 1 && @listing[:id] < 100 %>
     <%= link_to "Previous", listing_path(@listing[:id] - 1), class: "link-listing" %> |

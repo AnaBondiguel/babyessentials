@@ -44,22 +44,22 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 13. Creating Profile page: users can view their profile and what they bought and sold in the past
 
 ### Sitemap
-![Sitemap_App](assets/images/sitemap.jpg)
+![Sitemap_App](app/assets/images/sitemap.jpg)
 
 ### Screenshots
-![HomePage](assets/images/homepage.png)
-![ProfilePage](assets/images/profile.png)
-![BoughtItemPage](assets/images/boughtitem.png)
-![SoldItemPage](assets/images/solditem.png)
-![ListingsPage](assets/images/listing.png)
-![FormPage](assets/images/newlisting.png)
-![ItemsPage](assets/images/items.png)
-![SearchPage](assets/images/search.png)
-![PaymentPage](assets/images/payment.png)
-![SuccessPage](assets/images/success.png)
-![SignUpPage](assets/images/signup.png)
-![SignInPage](assets/images/signin.png)
-![PasswordPage](assets/images/forgotpassword.png)
+![HomePage](app/assets/images/homepage.png)
+![ProfilePage](app/assets/images/profile.png)
+![BoughtItemPage](app/assets/images/boughtitem.png)
+![SoldItemPage](app/assets/images/solditem.png)
+![ListingsPage](app/assets/images/listing.png)
+![FormPage](app/assets/images/newlisting.png)
+![ItemsPage](app/assets/images/items.png)
+![SearchPage](app/assets/images/search.png)
+![PaymentPage](app/assets/images/payment.png)
+![SuccessPage](app/assets/images/success.png)
+![SignUpPage](app/assets/images/signup.png)
+![SignInPage](app/assets/images/signin.png)
+![PasswordPage](app/assets/images/forgotpassword.png)
 
 ### Target audience
 Our target audiences are parents
@@ -73,13 +73,19 @@ I used html.erb in the views to structure the web pages.
 
 I used Postgreql database to create and modify data.
 
+I used yarn for package manager for javascript.
+
 I used Ruby and Rails to build the infrastructure to support the two-sided marketplace application. 
 
-I used AWS S3 Bucket feature to storage my uplodaded images
+I used AWS S3 Bucket feature to storage my uplodaded images.
 
-I used Stripe and webhook for a payment system
+I used Stripe and Webhook (with Ultrahook) for a payment system.
 
-I allow users can use their Facebook account to log in my application
+I allow users can use their Facebook account to log in my application.
+
+I used Devise flexible authentication solution to manage users authentication for my app.
+
+I used Active Storage to facilitate uploading files to a cloud storage service - AWS S3 Bucket, and attaching those files to Active Record objects.
 
 # R12. User stories for your app
 As mums, my friends and I want to get rid of our baby items because our kids grew up. We don't need our bassinet, baby capsule, baby walk, baby bouncer etc. anymore, but they are still in very good condition (some baby products have never been used or used once). We think other parents who have newborn babies may need these baby items. At the same time, we also would like to purchase toddler or kid essentials from other parents, such as bunk bed, bookshelf, desk, raincoat, bike etc.  and help each other out. We can also recycle those baby/kid items in our community and be environmentally friendly.
@@ -87,10 +93,10 @@ As mums, my friends and I want to get rid of our baby items because our kids gre
 We want to have an application to have 1) our accounts to create, edit and delete the listing products, 2) the listings where we can buy and sell the products, 3)the payment function that we can make transaction to puchase the products. 
 
 # R13. Wireframes for your app
-Please see the PDF document
+Please see the PDF document - Wireframes for two-sided market app.pdf
 
 # R14. An ERD for your app
-![ERDBabyEssentails](/images/ERD.png)
+![ERDBabyEssentails](app/assets/images/ERD.png)
 
 # R15. Explain the different high-level components (abstractions) in your app
 My two-sided marketplace application followed a typical Rails application architecture - Model View Controller (MVC). MVC has three main parts: model, view, and controller to serve a specific function and provide modularity.
@@ -208,7 +214,7 @@ belongs_to :user
 belongs_to :category
 
 # R19. Provide your database schema design
-![ERDBabyEssentails](assets/images/ERD.png)
+![ERDBabyEssentails](app/assets/images/ERD.png)
 
 # R20. Describe the way tasks are allocated and tracked in your project
 I used Trello to track and allocate my tasks in my project. I put them into small tasks and built a card for each of them. I labelled them into different colours for three different types of tasks: Tasks before application development, important tasks, and Readme documentation. I set up checklist for each Trello card and also the timeframe for each task. I put my cards into three stages: planning, doing, and done. Each task was moved from planning, to doing, and then done stages. 
@@ -217,6 +223,6 @@ Please see the details what I have done for my project in my Trello cards.
 [BabyEssentials_Trello](https://trello.com/b/shJmPj7B/two-sided-market-place-baby-essentails)
 
 Screenshot of my Trello
-![TrelloBabyEssentails](assets/images/Trello.png)
+![TrelloBabyEssentails](app/assets/images/Trello.png)
 
 

@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.all
   end
+
 # Create a search bar for webpages
   def search
     @listings = Listing.where("title LIKE ?","%" + params[:q] + "%")
@@ -16,9 +17,10 @@ class ListingsController < ApplicationController
   # GET /listings/1 or /listings/1.json
   #create a Stripe session to store which user is going to buy for which item 
   #all the information is sent in the session and Stripe will connect the session with the business in my strip account
+  
   def show
-
     if current_user
+    if @listing.picture.attached?
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       customer_email: current_user.email,
@@ -40,35 +42,8 @@ class ListingsController < ApplicationController
     )
     @session_id = session.id
  
+  end
     end
-
-
-       # @listings = Listing.all
-    # # current_index = @listings.find_index(@listing)
-    # listings_array = @listings.to_ary()
-    # prev_index = nil
-    # next_index = nil
-    # current_index = nil
-
-    # listings_array.each_with_index |index, listing| do
-    #   if listing.id == @listing.id then
-    #     current_index = index
-    #   end
-    # end
-
-    # if current_index == nil then
-    #   # 404
-    # end
-    
-    # if current_index > 1 then
-    #   prev_index = current_index - 1
-    #   @prev_link = @listings[prev_index]
-    # end
-
-    # if current_index < listings_array.length - 1 then
-    #   next_index = current_index + 1
-    #   @next_link = @listings[next_index]
-    # end
   end
  
   def new
@@ -118,26 +93,16 @@ class ListingsController < ApplicationController
     end
   end
 
-  # def place_order
-  #   Order.create(
-  #     listing_id: @listing.id,
-  #     seller_id: @listing.user_id,
-  #     buyer_id: current_user.id
-  #   )
-  #   @listing.update(sold: true)
-  #   redirect_to orders_success_path
-  # end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
     end
+
     # Set some form variables: create variable at categories so I can use it in the listings
     def set_form_vars
       @categories = Category.all
       @conditions = Listing.conditions.keys
-      
     end
  
     # Authorizing users: checking if the user who own the listing is the current logined user
