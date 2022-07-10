@@ -158,59 +158,88 @@ Entities and attributes
 10. Active_Storage_Variant_Records: blob_id, variation_digest, variant_record_id
 
 
-The relationship between users and orders
+The relationship between users and order:
+
 •	A user has none or many orders
+
 •	An order has to have one user
 
-The relationship between users and listings
+The relationship between users and listings:
+
 •	A user may have none or many listings
+
 •	A listing must have one user
 
-The relationship between listings and orders
+The relationship between listings and orders:
+
 •	An order has to have one listing
+
 •	Listings can only have none or one order
 
-The relationship between listings and categories 
+The relationship between listings and categories:
+
 •	An listing belongs to none or one category
+
 •	A category has none or many listings
 
-The relationship between Facebook and users
+The relationship between Facebook and users:
+
 •	An Facebook account has one user
+
 •	A user has none or one Facebook account
 
-The relationship between payments and orders
+The relationship between payments and orders:
+
 •	A payment has one order
+
 •	An order has one payment
 
-The relationship between listings and active storge attachments
+The relationship between listings and active storge attachments:
+
 •	A listing has one active storage attachment
+
 •	An active storage attachment has many listings
 
-The relationship between listings and action text rich texts
+The relationship between listings and action text rich texts:
+
 •	A listing has one or none action text rich text
+
 •	An action text rich text has many listings
 
-The relationship between active storage blobs and active storge attachments
+The relationship between active storage blobs and active storge attachments:
+
 •	An active storage attachment has one active storage blob
+
 •	An active storage blob has many active storge attachments
 
-The relationship between active storage blobs and active storage variant records
+The relationship between active storage blobs and active storage variant records:
+
 •	An active storage variant record has one active storage blob
+
 •	An active storage blob has many active storge variant records
 
-Users model
+Users model:
+
 has_many :listings
+
 has_many :sold_orders, foreign_key: “seller_id”, class_name: “Order”
+
 has_many :bought_orders, foreign_key: “buyer_id”, class_name: “Order”
+
 devise :omniauthable, omniauth_providers: %i (facebook)
 
-Orders model
+Orders model:
+
 belongs_to :listing
+
 belongs_to :buyer, foreign_key: “buyer_id”, class_name: “User”
+
 belongs_to :seller, foreign_key: “seller_id”, class_name: “User”
 
-Listings model
+Listings model:
+
 belongs_to :user
+
 belongs_to :category
 
 # R19. Provide your database schema design
