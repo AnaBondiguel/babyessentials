@@ -44,7 +44,7 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 13. Creating Profile page: users can view their profile and what they bought and sold in the past
 
 ### Sitemap
-![Sitemap_App](./app/assets/images/sitemap.jpg)
+![Sitemap_App](./app/assets/images/sitemap.png)
 
 ### Screenshots
 ![HomePage](./app/assets/images/homepage.png)
