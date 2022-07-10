@@ -44,22 +44,22 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 13. Creating Profile page: users can view their profile and what they bought and sold in the past
 
 ### Sitemap
-![Sitemap_App](app/assets/images/sitemap.jpg)
+![Sitemap_App](./app/assets/images/sitemap.jpg)
 
 ### Screenshots
-![HomePage](app/assets/images/homepage.png)
-![ProfilePage](app/assets/images/profile.png)
-![BoughtItemPage](app/assets/images/boughtitem.png)
-![SoldItemPage](app/assets/images/solditem.png)
-![ListingsPage](app/assets/images/listing.png)
-![FormPage](app/assets/images/newlisting.png)
-![ItemsPage](app/assets/images/items.png)
-![SearchPage](app/assets/images/search.png)
-![PaymentPage](app/assets/images/payment.png)
-![SuccessPage](app/assets/images/success.png)
-![SignUpPage](app/assets/images/signup.png)
-![SignInPage](app/assets/images/signin.png)
-![PasswordPage](app/assets/images/forgotpassword.png)
+![HomePage](./app/assets/images/homepage.png)
+![ProfilePage](./app/assets/images/profile.png)
+![BoughtItemPage](./app/assets/images/boughtitem.png)
+![SoldItemPage](./app/assets/images/solditem.png)
+![ListingsPage](./app/assets/images/listing.png)
+![FormPage](./app/assets/images/newlisting.png)
+![ItemsPage](./app/assets/images/items.png)
+![SearchPage](./app/assets/images/search.png)
+![PaymentPage](./app/assets/images/payment.png)
+![SuccessPage](./app/assets/images/success.png)
+![SignUpPage](./app/assets/images/signup.png)
+![SignInPage](./app/assets/images/signin.png)
+![PasswordPage](./app/assets/images/forgotpassword.png)
 
 ### Target audience
 Our target audiences are parents
@@ -96,7 +96,7 @@ We want to have an application to have 1) our accounts to create, edit and delet
 Please see the PDF document - Wireframes for two-sided market app.pdf
 
 # R14. An ERD for your app
-![ERDBabyEssentails](app/assets/images/ERD.png)
+![ERDBabyEssentails](./app/assets/images/ERD.png)
 
 # R15. Explain the different high-level components (abstractions) in your app
 My two-sided marketplace application followed a typical Rails application architecture - Model View Controller (MVC). MVC has three main parts: model, view, and controller to serve a specific function and provide modularity.
@@ -214,7 +214,7 @@ belongs_to :user
 belongs_to :category
 
 # R19. Provide your database schema design
-![ERDBabyEssentails](app/assets/images/ERD.png)
+![ERDBabyEssentails](./app/assets/images/ERD.png)
 
 # R20. Describe the way tasks are allocated and tracked in your project
 I used Trello to track and allocate my tasks in my project. I put them into small tasks and built a card for each of them. I labelled them into different colours for three different types of tasks: Tasks before application development, important tasks, and Readme documentation. I set up checklist for each Trello card and also the timeframe for each task. I put my cards into three stages: planning, doing, and done. Each task was moved from planning, to doing, and then done stages. 
