@@ -39,7 +39,7 @@ The purpose of this two-sided marketplace application is to help parents to buy 
 
 11. Using gem of Omniauth-Facebook: users can use their Facebook account to log into the application if they don't want to sign up with the application
 
-12. Applying bootstrap-scss to the application. I used Jumbotron and Navbar for the home page, and Card for viewing the listing page. 
+12. Applying bootstrap-scss to the application. I used Jumbotron and Navbar for the webpages, and Card for viewing the listing page. 
 
 13. Creating Profile page: users can view their profile and what they bought and sold in the past
 
@@ -217,12 +217,13 @@ belongs_to :category
 ![ERDBabyEssentails](./app/assets/images/ERD.png)
 
 # R20. Describe the way tasks are allocated and tracked in your project
-I used Trello to track and allocate my tasks in my project. I put them into small tasks and built a card for each of them. I labelled them into different colours for three different types of tasks: Tasks before application development, important tasks, and Readme documentation. I set up checklist for each Trello card and also the timeframe for each task. I put my cards into three stages: planning, doing, and done. Each task was moved from planning, to doing, and then done stages. 
+I used Trello to track and allocate my tasks in my project. I divided my project into small tasks and built a card for each task. I labelled each card into different colours for three different types of tasks: Tasks before application development, important tasks, and Readme documentation. In the Trello cards, I set up a checklist for what I should do for the task and ticked the box once I completed them. I also setup a timeframe for the task, which helped me to have better time management on the project. For example, I might spend too much time for one small task instead of moving my focus on to other important tasks. All my cards would go through planning stage, doing stage, and finally done stage. This helped me to understand what I should do now and what it is the next task. I also could review what I have done in the past. 
+
 
 Please see the details what I have done for my project in my Trello cards.
 [BabyEssentials_Trello](https://trello.com/b/shJmPj7B/two-sided-market-place-baby-essentails)
 
 Screenshot of my Trello
-![TrelloBabyEssentails](app/assets/images/Trello.png)
+![TrelloBabyEssentails](./app/assets/images/Trello.png)
 
 
